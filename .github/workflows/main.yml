@@ -26,7 +26,7 @@ jobs:
         run: flutter test
 
       - name: Run Integration Tests
-        run: flutter drive  --target=integration_test/app_test.dart --driver=integration_test/login_test.dart -d emulator-5554
+        run: flutter drive  --target=integration_test/app_test.dart --driver=integration_test/login_test.dart -d all
 
       - run: flutter build apk
       - name: List contents of flutter-apk directory
