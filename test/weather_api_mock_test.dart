@@ -32,8 +32,8 @@ void main() {
         http.Response(
             '{"temperature":23.0,"description":"Mostly sunnny"}', 200));
 
-    final res_satara = await getWeather(cityName, client);
-    expect(res_satara, isA<Map<String, dynamic>>());
+    final resSatara = await getWeather(cityName, client);
+    expect(resSatara, isA<Map<String, dynamic>>());
   });
 
 
@@ -47,8 +47,8 @@ void main() {
         http.Response(
             '{"temperature":23.0,"description":"Mostly sunnny"}', 200));
 
-    final res_sangli = await getWeather(cityName, client);
-    expect(res_sangli, isA<Map<String, dynamic>>());
+    final resSangli = await getWeather(cityName, client);
+    expect(resSangli, isA<Map<String, dynamic>>());
   });
 
 

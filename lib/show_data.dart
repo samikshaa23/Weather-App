@@ -49,7 +49,7 @@ class _ShowDataState extends State<ShowData> {
             ),
         Expanded(
           child: ListView.builder(
-            itemCount:ProfileList().p_list.length ,
+            itemCount:ProfileList().p_List.length ,
             itemBuilder: (BuildContext context, int index){
             return  Padding(
               padding: const EdgeInsets.only(left: 5, bottom: 30),
@@ -97,7 +97,7 @@ class _ShowDataState extends State<ShowData> {
                               flex: 4,
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 13),
-                                child: Text(ProfileList().p_list[index].name,
+                                child: Text(ProfileList().p_List[index].name,
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 18)),
                               ),
@@ -123,7 +123,7 @@ class _ShowDataState extends State<ShowData> {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                    '${ProfileList().p_list[index].phoneno}',
+                                    '${ProfileList().p_List[index].phoneno}',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 18)),
                               ),
@@ -149,7 +149,7 @@ class _ShowDataState extends State<ShowData> {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Text(
-                                    ProfileList().p_list[index].emailid,
+                                    ProfileList().p_List[index].emailid,
                                     style:const TextStyle(
                                         color: Colors.white, fontSize: 18)),
                               ),
@@ -178,7 +178,7 @@ class _ShowDataState extends State<ShowData> {
                                   try {
                                     // Fetch weather data
                                     final weatherData = await getWeather(
-                                        ProfileList().p_list[index].city,http.Client());
+                                        ProfileList().p_List[index].city,http.Client());
                                     final temperature = weatherData['days'][0]
                                     ['temp']
                                         .toStringAsFixed(1);
@@ -186,25 +186,26 @@ class _ShowDataState extends State<ShowData> {
                                     weatherData['description'];
 
                                     // Navigate to ShowTemp page
+                                    // ignore: use_build_context_synchronously
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ShowTemp(
                                           cityName:
-                                          ProfileList().p_list[index].city,
+                                          ProfileList().p_List[index].city,
                                           temperature: temperature,
                                           description: description,
                                         ),
                                       ),
                                     );
                                   } catch (e) {
-                                    print('Error fetching weather data: $e');
+                                    debugPrint('Error fetching weather data: $e');
                                     // Handle error (e.g., show a snackbar)
                                   }
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 10),
-                                  child: Text(ProfileList().p_list[index].city,
+                                  child: Text(ProfileList().p_List[index].city,
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 18)),
                                 ),

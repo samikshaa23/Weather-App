@@ -11,7 +11,8 @@ class Profiles{
 }
 
 class ProfileList{
-  List<Profiles> p_list=List.of([
+  // ignore: non_constant_identifier_names
+  List<Profiles> p_List=List.of([
     Profiles(
       name: "Samiksha Mohite",
       phoneno: 9359493600,
