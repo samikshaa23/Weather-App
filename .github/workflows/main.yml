@@ -24,3 +24,16 @@ jobs:
 
       - name: Run Unit Tests
         run: flutter test
+
+      - name: Run Integration Tests
+        run: flutter drive --target=integration_test/app_test.dart
+
+      - run: flutter build apk
+      - name: List contents of flutter-apk directory
+        run: ls -R build/app/outputs/flutter-apk/
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: build/app/outputs/flutter-apk/
