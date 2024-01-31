@@ -33,6 +33,7 @@ class _ShowDataState extends State<ShowData> {
       setState(() {
         loading = false;
       });
+      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -47,7 +48,7 @@ class _ShowDataState extends State<ShowData> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Error fetching weather data: $e"),
-          duration: Duration(seconds: 2), // Adjust the duration as needed
+          duration: const Duration(seconds: 2), // Adjust the duration as needed
         ),
       );
       debugPrint('Error fetching weather data: $e');
@@ -114,158 +115,156 @@ class _ShowDataState extends State<ShowData> {
                               color: Colors.black,width: 2,
                             )
                           ),*/
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    /*SizedBox(
-                                  height: 1,
-                                ),*/
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        const Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 13, left: 15),
-                                            child: Text('Name :',
-                                                key: Key('name'),
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  /*SizedBox(
+                                height: 1,
+                              ),*/
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 13, left: 15),
+                                          child: Text('Name :',
+                                              key: Key('name'),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
                                         ),
-                                        Expanded(
-                                          flex: 3,
+                                      ),
+                                      Expanded(
+                                        flex: 3,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 13),
+                                          child: Text(
+                                              ProfileList()
+                                                  .p_List[index]
+                                                  .name,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 15),
+                                          child: Text('Phone No:',
+                                              key: Key('phone no'),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
+                                          child: Text(
+                                              '${ProfileList().p_List[index].phoneno}',
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 15),
+                                          child: Text('E-Mail ID:',
+                                              key: Key('mail id'),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
+                                          child: Text(
+                                              ProfileList()
+                                                  .p_List[index]
+                                                  .emailid,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, left: 15),
+                                          child: Text('City:',
+                                              key: Key('city'),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18)),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 2,
+                                        child: InkWell(
+                                          onTap: () {
+                                            apicaling(index);
+                                          },
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 13),
+                                            padding: const EdgeInsets.only(
+                                                top: 10),
                                             child: Text(
                                                 ProfileList()
                                                     .p_List[index]
-                                                    .name,
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        const Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 15),
-                                            child: Text('Phone No:',
-                                                key: Key('phone no'),
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 2,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 10),
-                                            child: Text(
-                                                '${ProfileList().p_List[index].phoneno}',
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        const Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 15),
-                                            child: Text('E-Mail ID:',
-                                                key: Key('mail id'),
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 2,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 10),
-                                            child: Text(
-                                                ProfileList()
-                                                    .p_List[index]
-                                                    .emailid,
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        const Expanded(
-                                          flex: 1,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 15),
-                                            child: Text('City:',
-                                                key: Key('city'),
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 18)),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 2,
-                                          child: InkWell(
-                                            onTap: () {
-                                              apicaling(index);
-                                            },
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: Text(
-                                                  ProfileList()
-                                                      .p_List[index]
-                                                      .city,
+                                                    .city,
 
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
-                                                      decoration: TextDecoration.underline,
-                                                      fontSize: 18)),
-                                            ),
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    decoration: TextDecoration.underline,
+                                                    fontSize: 18)),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
