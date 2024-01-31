@@ -7,14 +7,14 @@ void main(){
 
     await tester.pumpWidget(const MaterialApp(home: ShowData()));
 
-    final titletext= find.byKey(const Key('profile'));
-    expect(titletext, findsOneWidget);
+    final titleText= find.byKey(const Key('profileKey'));
+    expect(titleText, findsOneWidget);
 
-    final nametext= find.byKey(const Key('name'));
-    expect(nametext, findsNWidgets(3));
+    final nameText= find.byKey(const Key('name'));
+    expect(nameText, findsNWidgets(3));
 
-    final phonenotext= find.byKey(const Key('phone no'));
-    expect(phonenotext, findsNWidgets(3));
+    final phoneNoText= find.byKey(const Key('phone no'));
+    expect(phoneNoText, findsNWidgets(3));
 
     final mailidtext= find.byKey(const Key('mail id'));
     expect(mailidtext, findsNWidgets(3));
