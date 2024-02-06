@@ -1,4 +1,4 @@
-name: Flutter CICD
+name: Flutter CICD Pipeline
 on:
   push:
     branches:
