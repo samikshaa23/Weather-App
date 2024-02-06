@@ -2,8 +2,7 @@ name: Flutter CICD Pipeline
 on:
   schedule:
     -"*/5 * * * *"
-  branches:
-    -main
+
 
 
   #push:
