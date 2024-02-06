@@ -1,8 +1,14 @@
 name: Flutter CICD Pipeline
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    -"*/5 * * * *"
+  branches:
+    -main
+
+
+  #push:
+    #branches:
+      #- main
 
 jobs:
   build:

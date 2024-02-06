@@ -8,21 +8,28 @@ import 'weather_api_mock_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
-  test('mock test api for pune city', () async {
-    final client = MockClient();
-    var cityName = 'pune';
-    when(client
-        .get(Uri.parse(
-        'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/$cityName?unitGroup=metric&key=N6ZGX8GC3DPU4A5NWWJAVURQC&contentType=json')))
-        .thenAnswer((_) async =>
-        http.Response(
-            '{"temperature":23.0,"description":"Mostly sunnny"}', 200));
 
-    final res = await getWeather(cityName, client);
-    expect(res, isA<Map<String, dynamic>>());
-  });
+  void testWeatherforcity(String city) {
+    test('mock test api for pune city', () async {
+      final client = MockClient();
+      //var cityName = 'pune';
+      when(client
+          .get(Uri.parse(
+          'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/$city?unitGroup=metric&key=N6ZGX8GC3DPU4A5NWWJAVURQC&contentType=json')))
+          .thenAnswer((_) async =>
+          http.Response(
+              '{"temperature":23.0,"description":"Mostly sunnny"}', 200));
 
-  test('mock test api for satara city', () async {
+      final res = await getWeather(city, client);
+      expect(res, isA<Map<String, dynamic>>());
+    });
+
+  }
+  final cities = ['pune', 'satara', 'sangli'];
+  for (final city in cities) {
+    testWeatherforcity(city);
+  }
+  /*test('mock test api for satara city', () async {
     final client = MockClient();
     var cityName = 'satara';
     when(client
@@ -51,5 +58,5 @@ void main() {
     expect(resSangli, isA<Map<String, dynamic>>());
   });
 
-
+*/
 }
